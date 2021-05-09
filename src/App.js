@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import { FaTimes } from "react-icons/fa";
 import Addtask from "./components/Addtask";
+import { useEffect } from "react";
 
 function App() {
   const tasks = [
@@ -12,6 +13,15 @@ function App() {
     { id: "29", tex: "dsdsdsdsd", day: "dsds/dsdsd/dsdsd", reminder: "flase" },
     { id: "30", tex: "dsdsdsdsd", day: "dsds/dsdsd/dsdsd", reminder: "flase" },
   ];
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+      const data = await res.json();
+      console.log(data);
+    };
+    fetchTasks();
+  }, []);
   const addTask = () => {
     console.log("add task");
   };
