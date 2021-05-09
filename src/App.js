@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
 
 function App() {
+  const tasks = [
+    { id: "25", tex: "dsdsdsdsd", day: "dsds/dsdsd/dsdsd", reminder: "flase" },
+    { id: "26", tex: "dsdsdsdsd", day: "dsds/dsdsd/dsdsd", reminder: "flase" },
+    { id: "27", tex: "dsdsdsdsd", day: "dsds/dsdsd/dsdsd", reminder: "flase" },
+    { id: "28", tex: "dsdsdsdsd", day: "dsds/dsdsd/dsdsd", reminder: "flase" },
+    { id: "29", tex: "dsdsdsdsd", day: "dsds/dsdsd/dsdsd", reminder: "flase" },
+    { id: "30", tex: "dsdsdsdsd", day: "dsds/dsdsd/dsdsd", reminder: "flase" },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      {tasks.map((task, index) => (
+        <div className="task">
+          <h1 key={index}>{task.tex}</h1>
+          <p>{task.day}</p>
+        </div>
+      ))}
     </div>
   );
 }
