@@ -7,9 +7,13 @@ export default function Addtask({ onAdd }) {
   console.log(text, day, reminder);
 
   //add task
+  const handleSubmit = (event) => {
+    event.preventDefault(); // check why this required
+    console.log(event);
+  };
 
   return (
-    <form className="add-form" onSubmit={onAdd}>
+    <form className="add-form" onSubmit={handleSubmit}>
       <div className="form-control">
         <label>Task</label>
         <input

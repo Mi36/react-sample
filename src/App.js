@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import { FaTimes } from "react-icons/fa";
 import Addtask from "./components/Addtask";
 import { useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   const tasks = [
@@ -26,18 +27,30 @@ function App() {
     console.log("add task");
   };
   return (
-    <div className="container">
-      <Header />
-      <Addtask onAdd={addTask} />
-      {tasks.map((task, index) => (
-        <div className="task" key={task.id}>
-          <h1>
-            {task.tex} <FaTimes style={{ color: "red", curser: "pointer" }} />
-          </h1>
-          <p>{task.day}</p>
-        </div>
-      ))}
-    </div>
+    <Router>
+      <div className="container">
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        {/* <Switch>
+          <Route path="/">
+            <Header />
+          </Route>
+          <Route path="/addtask" exact component={Addtask}>
+            <Addtask onAdd={addTask} />
+          </Route>
+        </Switch> */}
+        <Header />
+        <Addtask onAdd={addTask} />
+        {tasks.map((task, index) => (
+          <div className="task" key={task.id}>
+            <h1>
+              {task.tex} <FaTimes style={{ color: "red", curser: "pointer" }} />
+            </h1>
+            <p>{task.day}</p>
+          </div>
+        ))}
+      </div>
+    </Router>
   );
 }
 
